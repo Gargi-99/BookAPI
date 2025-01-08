@@ -62,7 +62,12 @@ const updateBook = async (req, res) => {
     if (book) {
       // Clear cache after updating the book
       redisClient.del("books");
-      res.json(book);
+
+      // Send response similar to book creation, including updated book data
+      res.json({
+        message: "Book updated successfully",
+        book: book // Return the updated book object
+      });
     } else {
       res.status(404).json({ message: "Book not found" });
     }
@@ -74,22 +79,26 @@ const updateBook = async (req, res) => {
 // Delete a book by ID
 const deleteBook = async (req, res) => {
   const bookId = req.params.id;
-  console.log(`Deleting book with ID: ${bookId}`);
 
   try {
     const book = await Book.findByIdAndDelete(bookId);
 
     if (book) {
-      console.log('Book deleted successfully');
+      // Clear cache after deleting the book
       redisClient.del("books");
-      res.status(200).json({ message: "Book deleted successfully" });
+
+      // Send response similar to book creation, including the deleted book data
+      res.status(200).json({
+        message: `Book with ID: ${bookId} deleted successfully`,
+        book: book // Return the deleted book object
+      });
     } else {
       res.status(404).json({ message: "Book not found" });
     }
   } catch (error) {
-    console.error('Error deleting book:', error);
     res.status(500).json({ message: error.message });
   }
 };
+
 
 module.exports = { getBooks, createBook, updateBook, deleteBook };
