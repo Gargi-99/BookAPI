@@ -1,37 +1,46 @@
-# Book Store API with Rate Limiting, Caching, and RBAC
+# Book Store API
 
-This is a Node.js-based API for a Book Store, implementing the following features:
-
-- **Rate Limiting**: To prevent users from making excessive requests.
-- **Caching**: To optimize performance by caching GET requests.
-- **Role-Based Access Control (RBAC)**: Differentiates the functionality based on user roles (Admin and User).
-
-## Table of Contents
-
-- [Technologies Used](#technologies-used)
-- [Setup and Installation](#setup-and-installation)
-- [Running the API](#running-the-api)
-- [API Endpoints](#api-endpoints)
-- [Rate Limiting Implementation](#rate-limiting-implementation)
-- [Caching Implementation](#caching-implementation)
-- [RBAC Implementation](#rbac-implementation)
-- [Testing](#testing)
+The Book Store API provides a simple and efficient way to manage books and user interactions. It features rate limiting, caching, and role-based access control (RBAC) to optimize performance and ensure secure access to resources.
 
 ## Technologies Used
+- **Primary Database**: MongoDB Atlas
+- **Caching**: Redis Cloud
+- **Backend**: Node.js with Express
+- **Features**: Rate Limiting, Caching, RBAC
 
-- **Node.js**: JavaScript runtime environment for building the API.
-- **Express.js**: Web framework for building the RESTful API.
-- **MongoDB Atlas**: Cloud database service for storing book data.
-- **Redis**: In-memory data store used for caching API responses.
-- **express-rate-limit**: Middleware for implementing rate limiting.
-- **ioredis**: Redis client for managing Redis connections.
-- **Mongoose**: ODM for MongoDB to interact with the database.
-- **dotenv**: For managing environment variables.
+---
 
-## Setup and Installation
+## How to Set Up and Run the API
 
-### Clone the repository:
+### Clone the Repository
+1. Open a terminal on your system.
+2. Clone the repository using the following command:
+```git clone https://github.com/Gargi-99/BookAPI.git```
 
-```bash
-git clone https://github.com/yourusername/book-store-api.git
-cd book-store-api
+### Install Dependencies
+1. Ensure Node.js (v14 or higher) is installed on the system. If not, download it from [ Node.js official website](https://nodejs.org/en/download).
+2. Run the following command to install the required dependencies:
+``` npm install 
+```
+
+### Set Up Environment Variables
+1. Create a .env file in the root directory of the project.
+2. Add the following environment variables to the .env file:
+``` MONGO_URI= mongodb+srv://dropforgargi:7xjC0Pr8yJ7YCvRd@cluster0.e6a0m.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+```
+
+### Start the API Server
+Run the following command to start the server:
+``` node app.js ```
+The server will start on http://localhost:3000.
+http://localhost:3000/api/books
+
+### Test the API Using Postman
+1. Set Up Headers
+For each request, you need to include the following headers:
+x-user-id: A unique identifier for the user : 12345
+x-role: The role of the user : Admin
+
+2. Follow the Postman API Docummentation for more details: [Gargi's BookAPI](https://documenter.getpostman.com/view/34504612/2sAYJAfyJQ).
+
+
