@@ -36,9 +36,9 @@ Root Endpoint: http://localhost:3000/api/books
 
 ### Test the API Using Postman
 1. Set Up Headers
-For each request, you need to include the following headers:
-x-user-id: A unique identifier for the user : 12345 <br>
-x-role: The role of the user : Admin
+For each request, you need to include the following headers: <br>
+A unique identifier for the user: ``` x-user-id ``` : ``` 12345 ```<br>
+The role of the user : ```x-role```: ```Admin ```
 
 2. Follow the Postman API Docummentation for more details: [Gargi's BookAPI](https://documenter.getpostman.com/view/34504612/2sAYJAfyJQ).
 
